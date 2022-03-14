@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {        
         $collection = collect();
-        $usuarios = User::all()->take(1);
+        $usuarios = User::all();
         foreach ($usuarios as $key => $usuario) {
 
             $collection->push(
