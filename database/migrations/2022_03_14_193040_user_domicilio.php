@@ -13,14 +13,15 @@ class UserDomicilio extends Migration
      */
     public function up()
     {
-        $table->id();        
-        $table->string('user_id');                        
-        $table->string('domicilio');                        
-        $table->string('numero_exterior');                                                    
-        $table->string('colonia');                        
-        $table->number('cp',5);                        
-        $table->string('ciudad');                        
-        $table->timestamps();
+        Schema::create('domicilios', function (Blueprint $table) {                       
+            $table->integer('user_id');                        
+            $table->string('domicilio');                        
+            $table->string('numero_exterior');                                                    
+            $table->string('colonia');                        
+            $table->integer('cp');                        
+            $table->string('ciudad');                        
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,6 +31,6 @@ class UserDomicilio extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('domicilios');
     }
 }
