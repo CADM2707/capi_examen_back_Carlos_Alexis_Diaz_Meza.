@@ -17,7 +17,8 @@ class UserController extends Controller
     public function index()
     {        
         $collection = collect();
-        $usuarios = User::all();
+        $usuarios = User::with('domicilio')->get()->take(1);
+
         foreach ($usuarios as $key => $usuario) {
 
             $collection->push(
@@ -29,7 +30,12 @@ class UserController extends Controller
                     'created_at' => $usuario->created_at,
                     'updated_at' => $usuario->updated_at,
                     'fecha_nacimento' => $usuario->fecha_nacimento,
-                    'edad' => Carbon::parse($usuario->fecha_nacimento)->age
+                    'edad' => Carbon::parse($usuario->fecha_nacimento)->age,
+                    'domicilio' => $usuario->domicilio->domicilio,
+                    'numero_exterior' => $usuario->domicilio->numero_exterior,
+                    'colonia' => $usuario->domicilio->colonia,
+                    'cp' => $usuario->domicilio->cp,
+                    'ciudad' => $usuario->domicilio->ciudad,
                 ]
             );
             

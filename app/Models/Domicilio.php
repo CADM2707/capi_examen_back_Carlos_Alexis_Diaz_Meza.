@@ -16,7 +16,6 @@ class Domicilio extends Model
         'numero_exterior',
         'colonia',
         'cp',
-        'ciudad',
-        ''
+        'ciudad',        
     ];
 }
